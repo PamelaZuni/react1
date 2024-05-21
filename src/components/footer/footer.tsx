@@ -8,10 +8,10 @@ function Footer() {
           <a href="https://github.com/PamelaZuni">
             <img src="./src/assets/img/github-logo.svg" alt="Github logo" />
           </a>
-          <a href="https://github.com/PamelaZuni">
+          <a href="https://linkedin.com">
             <img src="./src/assets/img/linkedin-logo.svg" alt="Linkedin Profile" />
           </a>
-          <a href="https://github.com/PamelaZuni">
+          <a href="https://instagram.com">
             <img src="./src/assets/img/instagram-logo.svg" alt="IG Logo" />
           </a>
         </div>
