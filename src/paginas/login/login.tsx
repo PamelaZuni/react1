@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import UsuarioLogin from "../../models/UsuarioLogin";
@@ -39,27 +39,11 @@ function Login() {
           <h2 className="text-slate-900 text-5xl ">Entrar</h2>
           <div className="flex flex-col w-full">
             <label htmlFor="usuario">Usuário</label>
-            <input
-              type="text"
-              id="usuario"
-              name="usuario"
-              placeholder="Usuario"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuarioLogin.usuario}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-            />
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario" className="border-2 border-slate-700 rounded p-2" value={usuarioLogin.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
           </div>
           <div className="flex flex-col w-full">
             <label htmlFor="senha">Senha</label>
-            <input
-              type="password"
-              id="senha"
-              name="senha"
-              placeholder="Senha"
-              className="border-2 border-slate-700 rounded p-2"
-              value={usuarioLogin.senha}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-            />
+            <input type="password" id="senha" name="senha" placeholder="Senha" className="border-2 border-slate-700 rounded p-2" value={usuarioLogin.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
           </div>
           <button
             type="submit"
@@ -71,7 +55,12 @@ function Login() {
 
           <hr className="border-slate-800 w-full" />
 
-          <p>Ainda não tem uma conta? Cadastre-se</p>
+          <p>
+            Ainda não tem uma conta?{""}
+            <Link to="/cadastro" className="text-indigo-800 hover:underline">
+              Cadastre-se
+            </Link>
+          </p>
         </form>
         <div className="fundoLogin hidden lg:block"></div>
       </div>
