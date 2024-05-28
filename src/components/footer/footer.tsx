@@ -1,8 +1,17 @@
+import { ReactNode, useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+
 function Footer() {
-  return (
-    <>
+  let data = new Date().getFullYear();
+
+  const { usuario } = useContext(AuthContext);
+
+  let component: ReactNode;
+
+  if (usuario.token !== "") {
+    component = (
       <section className="flex flex-col items-center bg-indigo-900 text-white py-3">
-        <h2>Personal Blog Pamela Rodrigues | Copyright &copy;</h2>
+        <h2>Personal Blog Pamela Rodrigues | Copyright &copy; {data}</h2>
         <p>Acesse as Redes Sociais</p>
         <div className="flex gap-2">
           <a href="https://github.com/PamelaZuni">
@@ -16,8 +25,9 @@ function Footer() {
           </a>
         </div>
       </section>
-    </>
-  );
+    );
+  }
+  return <>{component}</>;
 }
 
 export default Footer;
