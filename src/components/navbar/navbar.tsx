@@ -34,7 +34,10 @@ function NavBar() {
               Temas
             </Link>
             <Link to="/cadastrartema" className="hover:underline">
-              Cadastrar tema
+              Novo tema
+            </Link>
+            <Link to="/cadastrarpostagem" className="hover:underline">
+              Nova postagem
             </Link>
             <Link to="/perfil" className="hover:underline">
               Perfil
