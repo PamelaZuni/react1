@@ -4,7 +4,7 @@ import Tema from "../../../models/Tema";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { buscar } from "../../../services/Service";
 import CardTemas from "../cardtemas/CardTemas";
-import { DNA } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaTemas() {
@@ -30,7 +30,7 @@ function ListaTemas() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("You need to be logged in", "success");
+      ToastAlerta("You need to be logged in", "info");
 
       navigate("/");
     }
@@ -42,7 +42,7 @@ function ListaTemas() {
 
   return (
     <>
-      {temas.length === 0 && <DNA visible={true} height="200" width="200" ariaLabel="dna-loading" wrapperStyle={{}} wrapperClass="dna-wrapper mx-auto" />}
+      {temas.length === 0 && <ThreeDots visible={true} height="100" width="100" color="white" wrapperStyle={{}} wrapperClass="dna-wrapper mx-auto justify-center items-center" />}
 
       <div className="flex justify-center w-full my-4">
         <div className="container flex flex-col">

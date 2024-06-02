@@ -10,7 +10,7 @@ function NavBar() {
 
   function logout() {
     handleLogout();
-    ToastAlerta("O usuário foi desconectado com sucesso!", "info");
+    ToastAlerta("The user is successfully logged out", "info");
     navigate("/");
   }
 
@@ -44,7 +44,7 @@ function NavBar() {
               Profile
             </Link>
             <Link to="" onClick={logout} className="hover:underline">
-              Exit
+              Logout
             </Link>
           </div>
         </div>

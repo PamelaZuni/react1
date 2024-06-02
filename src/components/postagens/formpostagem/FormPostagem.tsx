@@ -63,7 +63,7 @@ function FormPostagem() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("You must be logged", "logging");
+      ToastAlerta("You must be logged in", "info");
       navigate("/");
     }
   }, [token]);
@@ -108,7 +108,7 @@ function FormPostagem() {
           },
         });
 
-        ToastAlerta("Post successfuly updated", "success");
+        ToastAlerta("Post successfully updated", "success");
       } catch (error: any) {
         console.log(error);
         if (error.toString().includes("401")) {
@@ -125,12 +125,12 @@ function FormPostagem() {
           },
         });
 
-        ToastAlerta("Post registered successfully", "success");
+        ToastAlerta("Post created successfully", "success");
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Error when registering the Post", "error");
+          ToastAlerta("Error when creating the Post", "error");
         }
       }
     }
@@ -143,7 +143,7 @@ function FormPostagem() {
 
   return (
     <div className="container flex flex-col mx-auto items-center text-white">
-      <h1 className="text-4xl text-center my-8">{id !== undefined ? "Edit Post" : "Register Post"}</h1>
+      <h1 className="text-4xl text-center my-8">{id !== undefined ? "Edit Post" : "Create Post"}</h1>
 
       <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaPostagem}>
         <div className="flex flex-col gap-2 ">
@@ -151,7 +151,7 @@ function FormPostagem() {
           <input type="text" placeholder="Title" name="titulo" required className="border-2 border-slate-700 rounded p-2 text-black" value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">Post Theme</label>
+          <label htmlFor="texto">Post Text</label>
           <input type="text" placeholder="Text" name="texto" required className="border-2 border-slate-700 rounded p-2 text-black" value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
         </div>
         <div className="flex flex-col gap-2">
@@ -175,7 +175,7 @@ function FormPostagem() {
                           mx-auto py-2 flex justify-center"
           disabled={carregandoTema}
         >
-          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id !== undefined ? "Update" : "Register"}</span>}
+          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id !== undefined ? "Update" : "Create"}</span>}
         </button>
       </form>
     </div>

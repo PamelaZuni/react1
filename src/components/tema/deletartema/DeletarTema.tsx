@@ -32,7 +32,7 @@ function DeletarTema() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("You must be logged!", "logging");
+      ToastAlerta("You must be logged in!", "info");
       navigate("/");
     }
   }, [token]);

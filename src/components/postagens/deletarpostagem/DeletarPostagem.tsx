@@ -59,7 +59,7 @@ function DeletarPostagem() {
       if (error.toString().includes("403")) {
         handleLogout();
       } else {
-        ToastAlerta("Erro ao deletar a postagem.", "error");
+        ToastAlerta("Error deleting a post.", "error");
       }
     }
 

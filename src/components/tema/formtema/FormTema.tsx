@@ -25,7 +25,7 @@ function FormTema() {
       });
     } catch (error: any) {
       if (error.toString().includes("401")) {
-        ToastAlerta("The token has expired!", "expired");
+        ToastAlerta("The token has expired!", "error");
         handleLogout();
       }
     }
@@ -33,7 +33,7 @@ function FormTema() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("You must be logged!", "logging");
+      ToastAlerta("You must be logged in!", "info");
       navigate("/");
     }
   }, [token]);
@@ -64,10 +64,10 @@ function FormTema() {
         await atualizar(`/temas`, tema, setTema, {
           headers: { Authorization: token },
         });
-        ToastAlerta("Theme Updated Successfully!", "sucesso");
+        ToastAlerta("Theme Updated Successfully!", "success");
       } catch (error: any) {
         if (error.toString().includes("401")) {
-          ToastAlerta("The token has expired!", "expired");
+          ToastAlerta("The token has expired!", "error");
           handleLogout();
         } else {
           ToastAlerta("Error Updating the Theme!", "error");
@@ -78,7 +78,7 @@ function FormTema() {
         await cadastrar(`/temas`, tema, setTema, {
           headers: { Authorization: token },
         });
-        ToastAlerta("Theme Registered Successfully!", "success");
+        ToastAlerta("Theme Created Successfully!", "success");
       } catch (error: any) {
         if (error.toString().includes("401")) {
           ToastAlerta("The token has expired!", "error");
@@ -97,7 +97,7 @@ function FormTema() {
 
   return (
     <div className="container flex flex-col items-center justify-center mx-auto text-white">
-      <h1 className="text-4xl text-center my-8">{id === undefined ? "Register a new Theme" : "Edit Theme"}</h1>
+      <h1 className="text-4xl text-center my-8">{id === undefined ? "Create a new Theme" : "Edit Theme"}</h1>
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
         <div className="flex flex-col gap-2">
@@ -109,7 +109,7 @@ function FormTema() {
                              hover:bg-indigo-300 w-1/2 py-2 mx-auto flex justify-center"
           type="submit"
         >
-          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id === undefined ? "Register" : "Updated"}</span>}
+          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id === undefined ? "Create" : "Update"}</span>}
         </button>
       </form>
     </div>

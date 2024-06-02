@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { DNA } from "react-loader-spinner";
+import { ThreeDots } from "react-loader-spinner";
 import { buscar } from "../../../services/Service";
 import { AuthContext } from "../../../contexts/AuthContext";
 import Postagem from "../../../models/Postagem";
@@ -33,7 +33,7 @@ function ListaPostagens() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("You need to be logged in", "success");
+      ToastAlerta("You need to be logged in", "info");
       //TODOwhen I use the ToasAlert doesnt work)
       navigate("/");
     }
@@ -45,7 +45,7 @@ function ListaPostagens() {
 
   return (
     <>
-      {postagens.length === 0 && <DNA visible={true} height="200" width="200" ariaLabel="dna-loading" wrapperStyle={{}} wrapperClass="dna-wrapper mx-auto" />}
+      {postagens.length === 0 && <ThreeDots visible={true} height="100" width="100" color="white" wrapperStyle={{}} wrapperClass="circles-wrapper mx-auto justify-center items-center" />}
       <div
         className="container mx-auto my-4 
               grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
