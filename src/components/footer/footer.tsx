@@ -10,9 +10,9 @@ function Footer() {
 
   if (usuario.token !== "") {
     component = (
-      <section className="flex flex-col items-center bg-indigo-900 text-white py-3">
-        <h2>Personal Blog Pamela Rodrigues | Copyright &copy; {data}</h2>
-        <p>Acesse as Redes Sociais</p>
+      <section className="flex flex-col items-center bg-slate-950 text-white py-3">
+        <h2>Purrs Blog by Pamela Rodrigues | Copyright &copy; {data}</h2>
+        <p>Contact </p>
         <div className="flex gap-2">
           <a href="https://github.com/PamelaZuni">
             <img src="./src/assets/img/github-logo.svg" alt="Github logo" />
@@ -20,8 +20,8 @@ function Footer() {
           <a href="https://linkedin.com">
             <img src="./src/assets/img/linkedin-logo.svg" alt="Linkedin Profile" />
           </a>
-          <a href="https://instagram.com">
-            <img src="./src/assets/img/instagram-logo.svg" alt="IG Logo" />
+          <a href="https://mail.google.com/mail/u/1/#inbox?compose=GTvVlcRzBWVKNlwpkBtrqpmmMknbHtDRDBVRsFpdvKCGKNscNvMHHtPKHkVWlLwMzvHdRPbVhNtlW">
+            <img src="./src/assets/img/envelope-open.svg" alt="IG Logo" />
           </a>
         </div>
       </section>

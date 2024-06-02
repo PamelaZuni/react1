@@ -5,6 +5,7 @@ import { AuthContext } from "../../../contexts/AuthContext";
 import Postagem from "../../../models/Postagem";
 import { useNavigate } from "react-router-dom";
 import CardPostagens from "../cardpostagens/CardPostagens";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function ListaPostagens() {
   const navigate = useNavigate();
@@ -24,6 +25,7 @@ function ListaPostagens() {
     } catch (error: any) {
       if (error.toString().includes("403")) {
         alert("O token expirou, favor logar novamente");
+        //TODOwhen I use the ToasAlert doesnt work)
         handleLogout();
       }
     }
@@ -31,7 +33,8 @@ function ListaPostagens() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      ToastAlerta("You need to be logged in", "success");
+      //TODOwhen I use the ToasAlert doesnt work)
       navigate("/");
     }
   }, [token]);

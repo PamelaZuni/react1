@@ -4,6 +4,7 @@ import Tema from "../../../models/Tema";
 import { AuthContext } from "../../../contexts/AuthContext";
 import { atualizar, buscar, cadastrar } from "../../../services/Service";
 import { RotatingLines } from "react-loader-spinner";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormTema() {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ function FormTema() {
       });
     } catch (error: any) {
       if (error.toString().includes("401")) {
-        alert("O token expirou!");
+        ToastAlerta("The token has expired!", "expired");
         handleLogout();
       }
     }
@@ -32,7 +33,7 @@ function FormTema() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado!");
+      ToastAlerta("You must be logged!", "logging");
       navigate("/");
     }
   }, [token]);
@@ -63,13 +64,13 @@ function FormTema() {
         await atualizar(`/temas`, tema, setTema, {
           headers: { Authorization: token },
         });
-        alert("Tema atualizado com sucesso!");
+        ToastAlerta("Theme Updated Successfully!", "sucesso");
       } catch (error: any) {
         if (error.toString().includes("401")) {
-          alert("O token Expirou!");
+          ToastAlerta("The token has expired!", "expired");
           handleLogout();
         } else {
-          alert("Erro ao atualizar o Tema!");
+          ToastAlerta("Error Updating the Theme!", "error");
         }
       }
     } else {
@@ -77,13 +78,13 @@ function FormTema() {
         await cadastrar(`/temas`, tema, setTema, {
           headers: { Authorization: token },
         });
-        alert("Tema cadastrado com sucesso!");
+        ToastAlerta("Theme Registered Successfully!", "success");
       } catch (error: any) {
         if (error.toString().includes("401")) {
-          alert("O token Expirou!");
+          ToastAlerta("The token has expired!", "error");
           handleLogout();
         } else {
-          alert("Erro ao cadastrar o Tema!");
+          ToastAlerta("Error Regostering the Theme!", "error");
         }
       }
     }
@@ -95,20 +96,20 @@ function FormTema() {
   console.log(JSON.stringify(tema));
 
   return (
-    <div className="container flex flex-col items-center justify-center mx-auto">
-      <h1 className="text-4xl text-center my-8">{id === undefined ? "Cadastrar um novo Tema" : "Editar Tema"}</h1>
+    <div className="container flex flex-col items-center justify-center mx-auto text-white">
+      <h1 className="text-4xl text-center my-8">{id === undefined ? "Register a new Theme" : "Edit Theme"}</h1>
 
       <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoTema}>
         <div className="flex flex-col gap-2">
-          <label htmlFor="descricao">Descrição do Tema</label>
-          <input type="text" placeholder="Descreva aqui seu tema" name="descricao" className="border-2 border-slate-700 rounded p-2" value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+          <label htmlFor="descricao">Theme Description</label>
+          <input type="text" placeholder="Describe your topic here" name="descricao" className="border-2 border-slate-700 rounded p-2 text-black" value={tema.descricao} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
         </div>
         <button
-          className="rounded text-slate-100 bg-indigo-400
-                             hover:bg-indigo-800 w-1/2 py-2 mx-auto flex justify-center"
+          className="rounded  bg-blue-900
+                             hover:bg-indigo-300 w-1/2 py-2 mx-auto flex justify-center"
           type="submit"
         >
-          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>}
+          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id === undefined ? "Register" : "Updated"}</span>}
         </button>
       </form>
     </div>
