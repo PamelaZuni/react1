@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthContext";
 import Postagem from "../../../models/Postagem";
 import Tema from "../../../models/Tema";
+import { ToastAlerta } from "../../../utils/ToastAlerta";
 
 function FormPostagem() {
   const navigate = useNavigate();
@@ -62,7 +63,7 @@ function FormPostagem() {
 
   useEffect(() => {
     if (token === "") {
-      alert("Você precisa estar logado");
+      ToastAlerta("You must be logged in", "info");
       navigate("/");
     }
   }, [token]);
@@ -107,13 +108,13 @@ function FormPostagem() {
           },
         });
 
-        alert("Postagem atualizada com sucesso");
+        ToastAlerta("Post successfully updated", "success");
       } catch (error: any) {
         console.log(error);
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          alert("Erro ao atualizar a Postagem");
+          ToastAlerta("Error updating Post", "error");
         }
       }
     } else {
@@ -124,12 +125,12 @@ function FormPostagem() {
           },
         });
 
-        alert("Postagem cadastrada com sucesso");
+        ToastAlerta("Post created successfully", "success");
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          alert("Erro ao cadastrar a Postagem");
+          ToastAlerta("Error when creating the Post", "error");
         }
       }
     }
@@ -141,23 +142,23 @@ function FormPostagem() {
   const carregandoTema = tema.descricao === "";
 
   return (
-    <div className="container flex flex-col mx-auto items-center">
-      <h1 className="text-4xl text-center my-8">{id !== undefined ? "Editar Postagem" : "Cadastrar Postagem"}</h1>
+    <div className="container flex flex-col mx-auto items-center text-white">
+      <h1 className="text-4xl text-center my-8">{id !== undefined ? "Edit Post" : "Create Post"}</h1>
 
       <form className="flex flex-col w-1/2 gap-4" onSubmit={gerarNovaPostagem}>
-        <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">Título da Postagem</label>
-          <input type="text" placeholder="Titulo" name="titulo" required className="border-2 border-slate-700 rounded p-2" value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+        <div className="flex flex-col gap-2 ">
+          <label htmlFor="titulo">Post Title</label>
+          <input type="text" placeholder="Title" name="titulo" required className="border-2 border-slate-700 rounded p-2 text-black" value={postagem.titulo} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
         </div>
         <div className="flex flex-col gap-2">
-          <label htmlFor="titulo">Texto da Postagem</label>
-          <input type="text" placeholder="Texto" name="texto" required className="border-2 border-slate-700 rounded p-2" value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
+          <label htmlFor="texto">Post Text</label>
+          <input type="text" placeholder="Text" name="texto" required className="border-2 border-slate-700 rounded p-2 text-black" value={postagem.texto} onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)} />
         </div>
         <div className="flex flex-col gap-2">
-          <p>Tema da Postagem</p>
-          <select name="tema" id="tema" className="border p-2 border-slate-800 rounded" onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
+          <p>Post Theme</p>
+          <select name="tema" id="tema" className="border p-2 border-slate-800 rounded text-black" onChange={(e) => buscarTemaPorId(e.currentTarget.value)}>
             <option value="" selected disabled>
-              Selecione um Tema
+              Select a Theme
             </option>
 
             {temas.map((tema) => (
@@ -169,12 +170,12 @@ function FormPostagem() {
         </div>
         <button
           type="submit"
-          className="rounded disabled:bg-slate-200 bg-indigo-400 
-                          hover:bg-indigo-800 text-white font-bold w-1/2 
+          className="rounded disabled:bg-slate-200
+                          hover:bg-blue-900 text-white font-bold w-1/2 
                           mx-auto py-2 flex justify-center"
           disabled={carregandoTema}
         >
-          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id !== undefined ? "Atualizar" : "Cadastrar"}</span>}
+          {isLoading ? <RotatingLines strokeColor="white" strokeWidth="5" animationDuration="0.75" width="24" visible={true} /> : <span>{id !== undefined ? "Update" : "Create"}</span>}
         </button>
       </form>
     </div>

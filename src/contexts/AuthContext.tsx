@@ -52,10 +52,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     try {
       await login(`/usuarios/logar`, userLogin, setUsuario);
-      ToastAlerta("Usuário autenticado com sucesso!", "sucesso");
+      ToastAlerta("User authenticated successfully!", "sucesso");
       setIsLoading(false);
     } catch (error) {
-      ToastAlerta("Dados do Usuário inconsistentes!", "erro");
+      ToastAlerta("Inconsistent User Data!", "error");
       setIsLoading(false);
     }
   }

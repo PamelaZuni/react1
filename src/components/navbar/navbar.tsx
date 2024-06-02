@@ -10,7 +10,7 @@ function NavBar() {
 
   function logout() {
     handleLogout();
-    ToastAlerta("O usuário foi desconectado com sucesso!", "info");
+    ToastAlerta("The user is successfully logged out", "info");
     navigate("/");
   }
 
@@ -20,31 +20,31 @@ function NavBar() {
     component = (
       <div
         className="w-full flex justify-center py-4
-                 bg-indigo-900 text-white"
+                 bg-slate-950 text-white"
       >
         <div className="container flex justify-between text-lg">
           <Link to="/home" className="text-2xl font-bold">
-            Blog Pessoal
+            Purrs Blog
           </Link>
 
           <div className="flex gap-4">
             <Link to="/postagens" className="hover:underline">
-              Postagens
+              Posts
             </Link>
             <Link to="/temas" className="hover:underline">
-              Temas
+              Theme
             </Link>
             <Link to="/cadastrartema" className="hover:underline">
-              Novo tema
+              New Theme
             </Link>
             <Link to="/cadastrarpostagem" className="hover:underline">
-              Nova postagem
+              New Post
             </Link>
             <Link to="/perfil" className="hover:underline">
-              Perfil
+              Profile
             </Link>
             <Link to="" onClick={logout} className="hover:underline">
-              Sair
+              Logout
             </Link>
           </div>
         </div>
