@@ -1,10 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Navbar from "./components/navbar/Navbar";
 import { AuthProvider } from "./contexts/AuthContext";
-import Home from "./paginas/home/home";
 import Cadastro from "./paginas/cadastro/Cadastro";
 import Footer from "./components/footer/footer";
-import Login from "./paginas/login/Login";
 import ListaTemas from "./components/tema/listatemas/ListaTemas";
 import FormTema from "./components/tema/formtema/FormTema";
 import DeletarTema from "./components/tema/deletartema/DeletarTema";
@@ -15,6 +12,9 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import Perfil from "./paginas/perfil/Perfil";
+import Navbar from "./components/navbar/navbar";
+import Home from "./paginas/home/Home";
+import Login from "./paginas/login/login";
 
 function App() {
   return (

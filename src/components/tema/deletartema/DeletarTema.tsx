@@ -54,7 +54,7 @@ function DeletarTema() {
       await deletar(`/temas/${id}`, {
         headers: { Authorization: token },
       });
-      ToastAlerta("Theme was successfully deleted!", "deleted");
+      ToastAlerta("Theme was successfully deleted!", "success");
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
