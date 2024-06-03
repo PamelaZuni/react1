@@ -13,7 +13,7 @@ function CardPostagem({ postagem }: CardPostagensProps) {
       // style={{ backgroundColor: "#fffff"}} can be used the inline css as well instead of bg_white
     >
       <div>
-        <div className="flex w-full bg-blue-900 py-2 px-4 items-center gap-4">
+        <div className="flex w-full bg-slate-950 py-2 px-4 items-center gap-4">
           <img src={postagem.usuario?.foto} className="h-12 rounded-full" alt={postagem.usuario?.nome} />
           <h3 className="text-white text-lg font-bold text-center uppercase">{postagem.usuario?.nome}</h3>
         </div>
