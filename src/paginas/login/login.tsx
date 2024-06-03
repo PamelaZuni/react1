@@ -5,6 +5,7 @@ import { ChangeEvent, useContext, useEffect, useState } from "react";
 import UsuarioLogin from "../../models/UsuarioLogin";
 import { AuthContext } from "../../contexts/AuthContext";
 import { RotatingLines } from "react-loader-spinner";
+import LoginCat from "../../assets/img/login-cat.png";
 
 function Login() {
   const navigate = useNavigate();
@@ -64,7 +65,7 @@ function Login() {
           </p>
         </form>
         <div className="fundoLogin hidden lg:block">
-          <img src="./src/assets/img/login-cat.png" alt="Cat purrs" />
+          <img src={LoginCat} alt="Cat purrs" />
         </div>
       </div>
     </>
