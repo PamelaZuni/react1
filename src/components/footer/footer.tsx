@@ -1,5 +1,9 @@
 import { ReactNode, useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
+import { Envelope } from "@phosphor-icons/react";
+import EnvelopeOpen from "../../assets/img/envelope-open.svg";
+import Linkedin from "../../assets/img/linkedin-logo.svg";
+import Github from "../../assets/img/github-logo.svg";
 
 function Footer() {
   let data = new Date().getFullYear();
@@ -15,13 +19,13 @@ function Footer() {
         <p>Contact </p>
         <div className="flex gap-2">
           <a href="https://github.com/PamelaZuni">
-            <img src="./src/assets/img/github-logo.svg" alt="Github logo" />
+            <img src={Github} alt="Github logo" />
           </a>
           <a href="https://linkedin.com">
-            <img src="./src/assets/img/linkedin-logo.svg" alt="Linkedin Profile" />
+            <img src={Linkedin} alt="Linkedin Profile" />
           </a>
           <a href="https://mail.google.com/mail/u/1/#inbox?compose=GTvVlcRzBWVKNlwpkBtrqpmmMknbHtDRDBVRsFpdvKCGKNscNvMHHtPKHkVWlLwMzvHdRPbVhNtlW">
-            <img src="./src/assets/img/envelope-open.svg" alt="IG Logo" />
+            <img src={EnvelopeOpen} alt="IG Logo" />
           </a>
         </div>
       </section>

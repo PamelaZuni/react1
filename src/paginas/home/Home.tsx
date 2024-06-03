@@ -1,5 +1,6 @@
 import ListaPostagens from "../../components/postagens/listapostagens/ListaPostagens";
 import ModalPostagem from "../../components/postagens/modalpostagem/ModalPostagem";
+import Cat from "../../assets/img/happy-cat.png";
 
 function Home() {
   return (
@@ -18,7 +19,7 @@ function Home() {
           </div>
 
           <div className="flex justify-center ">
-            <img src="./src/assets/img/happy-cat.png" alt="Imagem Página Home" className="w-2/3" />
+            <img src={Cat} alt="Imagem Página Home" className="w-2/3" />
           </div>
         </div>
       </div>
