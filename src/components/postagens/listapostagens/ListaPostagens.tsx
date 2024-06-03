@@ -24,8 +24,7 @@ function ListaPostagens() {
       });
     } catch (error: any) {
       if (error.toString().includes("403")) {
-        alert("O token expirou, favor logar novamente");
-        //TODOwhen I use the ToasAlert doesnt work)
+        ToastAlerta("The token has expired, please log in again", "info");
         handleLogout();
       }
     }
@@ -34,7 +33,7 @@ function ListaPostagens() {
   useEffect(() => {
     if (token === "") {
       ToastAlerta("You need to be logged in", "info");
-      //TODOwhen I use the ToasAlert doesnt work)
+
       navigate("/");
     }
   }, [token]);
